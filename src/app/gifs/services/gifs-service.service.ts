@@ -24,7 +24,6 @@ export class GifsServiceService {
     this.resultados = JSON.parse(localStorage.getItem('resultados')!) || [];
   }
 
-
   buscarGifs(query: string) {
     query = query.trim().toLowerCase();
     if (!this._historial.includes(query)) {
@@ -38,8 +37,6 @@ export class GifsServiceService {
       .set('api_key', this.apiKey)
       .set('q', query)
       .set('limit', '10')
-
-    console.log(params.toString());
 
     this.http.get<SearchGifsResponse>(`${this.url}?${params}`)
       .subscribe((res: any) => {
